@@ -2,7 +2,9 @@
 # dispatch
 
   Plugin for `ripplejs/view` to emit custom DOM events that bubble up
-  the tree so that parent views can listen to them.
+  the tree so that parent views can listen to them. The benefit of this
+  is that a parent view doesn't need to know anything about the child
+  views at all, it's just listening to the DOM.
 
 ## Installation
 
