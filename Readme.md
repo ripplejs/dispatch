@@ -18,6 +18,20 @@ var dispatch = require('dispatch');
 View.use(dispatch);
 ```
 
+In a child view:
+
+```
+this.dispatch('user updated', user, id);
+```
+
+Then in a parent view, you just listen on the DOM:
+
+```
+this.listen('user updated', function(user, id){
+  // Do things
+});
+```
+
 ## License
 
   The MIT License (MIT)
