@@ -1,17 +1,22 @@
 
-# trial-notification
+# dispatch
 
-  Display a message the top of the page if the owners trial has expire
+  Plugin for `ripplejs/view` to emit custom DOM events that bubble up
+  the tree so that parent views can listen to them.
 
 ## Installation
 
   Install with [component(1)](http://component.io):
 
-    $ component install segmentio/trial-notification
+    $ component install ripplejs/dispatch
 
 ## API
 
+```js
+var dispatch = require('dispatch');
 
+View.use(dispatch);
+```
 
 ## License
 
