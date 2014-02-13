@@ -57,4 +57,17 @@ describe('dispatch', function(){
     }
   });
 
+  it('should pass in all args in sequence', function(done){
+    View.use(dispatch);
+    var view = new View();
+    document.body.appendChild(view.el);
+    view.listen('test', function(e, one, two, three){
+      assert(one === "one");
+      assert(two === "two");
+      assert(three === "three");
+      done();
+    });
+    view.dispatch('test', "one", "two", "three");
+  })
+
 });
