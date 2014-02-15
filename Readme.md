@@ -14,24 +14,36 @@
 
 ## API
 
-```js
-var dispatch = require('dispatch');
+Add it as a plugin:
 
-View.use(dispatch);
+```js
+view(template).use(dispatch);
 ```
 
 In a child view:
 
-```
-this.dispatch('user updated', user, id);
+```js
+var view = require('view');
+
+var View = view(template, function(){
+  this.dispatch('user updated', user, id);
+});
+
+View.use(dispatch);
 ```
 
 Then in a parent view, you just listen on the DOM:
 
-```
-this.listen('user updated', function(user, id){
-  // Do things
+```js
+var view = require('view');
+
+var View = view(template, function(){
+  this.dispatchListener('user updated', function(event, user, id){
+    console.log(user);
+  });
 });
+
+View.use(dispatch);
 ```
 
 ## License

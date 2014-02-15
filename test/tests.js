@@ -13,7 +13,7 @@ describe('dispatch', function(){
     View.use(dispatch);
     var view = new View();
     document.body.appendChild(view.el);
-    view.listen('test', function(){
+    view.dispatchListener('test', function(){
       done();
     });
     view.dispatch('test');
@@ -23,7 +23,7 @@ describe('dispatch', function(){
     View.use(dispatch);
     var view = new View();
     document.body.appendChild(view.el);
-    view.listen('test', function(e, data){
+    view.dispatchListener('test', function(e, data){
       assert(data.name === "fred");
       done();
     });
@@ -38,7 +38,7 @@ describe('dispatch', function(){
     var child = new View();
     parent.el.appendChild(child.el);
     document.body.appendChild(parent.el);
-    parent.listen('test', function(){
+    parent.dispatchListener('test', function(){
       done();
     });
     child.dispatch('test');
@@ -61,7 +61,7 @@ describe('dispatch', function(){
     View.use(dispatch);
     var view = new View();
     document.body.appendChild(view.el);
-    view.listen('test', function(e, one, two, three){
+    view.dispatchListener('test', function(e, one, two, three){
       assert(one === "one");
       assert(two === "two");
       assert(three === "three");
