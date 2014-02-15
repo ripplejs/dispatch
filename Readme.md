@@ -32,7 +32,7 @@ if(typeof CustomEvent === "undefined") {
 
 ## API
 
-This is a plugin for [ripplejs/ripple](https://github.com/ripplejs/ripple). So look at
+This is a plugin for [ripple](https://github.com/ripplejs/ripple). So look at
 the [documentation](https://github.com/ripplejs/ripple) to get a better understanding of what's happening below.
 
 You'll use it as a plugin:
@@ -47,11 +47,12 @@ In a child view:
 ```js
 var ripple = require('ripple');
 
-var View = ripple(template, function(){
+var View = ripple(template)
+  .use(dispatch);
+
+View.init(function(){
   this.dispatch('user updated', user, id);
 });
-
-View.use(dispatch);
 ```
 
 Then in a parent view, you just listen on the DOM:
@@ -59,13 +60,14 @@ Then in a parent view, you just listen on the DOM:
 ```js
 var ripple = require('ripple');
 
-var View = ripple(template, function(){
+var View = ripple(template)
+  .use(dispatch);
+
+View.init(function(){
   this.dispatchListener('user updated', function(event, user, id){
     console.log(user);
   });
 });
-
-View.use(dispatch);
 ```
 
 ## License
