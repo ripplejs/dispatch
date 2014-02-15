@@ -33,22 +33,22 @@ if(typeof CustomEvent === "undefined") {
 
 ## API
 
-This is a plugin for [ripplejs/view](https://github.com/ripplejs/view). So look at
-the [documentation](https://github.com/ripplejs/view) for `View` to get a better understanding of what's happening below.
+This is a plugin for [ripplejs/ripple](https://github.com/ripplejs/ripple). So look at
+the [documentation](https://github.com/ripplejs/ripple) to get a better understanding of what's happening below.
 
 You'll it as a plugin:
 
 ```js
-var View = view(template);
+var View = ripple(template);
 View.use(dispatch);
 ```
 
 In a child view:
 
 ```js
-var view = require('view');
+var ripple = require('ripple');
 
-var View = view(template, function(){
+var View = ripple(template, function(){
   this.dispatch('user updated', user, id);
 });
 
@@ -58,9 +58,9 @@ View.use(dispatch);
 Then in a parent view, you just listen on the DOM:
 
 ```js
-var view = require('view');
+var ripple = require('ripple');
 
-var View = view(template, function(){
+var View = ripple(template, function(){
   this.dispatchListener('user updated', function(event, user, id){
     console.log(user);
   });
