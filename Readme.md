@@ -1,4 +1,3 @@
-
 # dispatch
 
   Plugin for `ripplejs/view` to emit custom DOM events that bubble up
@@ -36,7 +35,7 @@ if(typeof CustomEvent === "undefined") {
 This is a plugin for [ripplejs/view](https://github.com/ripplejs/view). So look at
 the [documentation](https://github.com/ripplejs/view) for `View` to get a better understanding of what's happening below.
 
-You'll it as a plugin:
+You'll use it as a plugin:
 
 ```js
 var View = view(template);
