@@ -2,6 +2,18 @@ var assert = require('assert');
 var dispatch = require('dispatch');
 var createView = require('view');
 
+// https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent
+if(typeof CustomEvent === "undefined") {
+  function CustomEvent (event, params) {
+    params = params || { bubbles: false, cancelable: false, detail: undefined };
+    var evt = document.createEvent('CustomEvent');
+    evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+    return evt;
+  }
+  CustomEvent.prototype = window.CustomEvent.prototype;
+  window.CustomEvent = CustomEvent;
+}
+
 describe('dispatch', function(){
   var View;
 

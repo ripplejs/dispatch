@@ -12,12 +12,35 @@
 
     $ component install ripplejs/dispatch
 
-## API
+## CustomEvent Shim
 
-Add it as a plugin:
+This plugin uses the `CustomEvent` API. This isn't available in IE9
+but you can add it with this shim:
 
 ```js
-view(template).use(dispatch);
+// https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent
+if(typeof CustomEvent === "undefined") {
+  function CustomEvent (event, params) {
+    params = params || { bubbles: false, cancelable: false, detail: undefined };
+    var evt = document.createEvent('CustomEvent');
+    evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+    return evt;
+  }
+  CustomEvent.prototype = window.CustomEvent.prototype;
+  window.CustomEvent = CustomEvent;
+}
+```
+
+## API
+
+This is a plugin for [ripplejs/view](https://github.com/ripplejs/view). So look at
+the [documentation](https://github.com/ripplejs/view) for `View` to get a better understanding of what's happening below.
+
+You'll it as a plugin:
+
+```js
+var View = view(template);
+View.use(dispatch);
 ```
 
 In a child view:
