@@ -50,7 +50,7 @@ var ripple = require('ripple');
 var View = ripple(template)
   .use(dispatch);
 
-View.init(function(){
+View.ready(function(){
   this.dispatch('user updated', user, id);
 });
 ```
@@ -63,7 +63,7 @@ var ripple = require('ripple');
 var View = ripple(template)
   .use(dispatch);
 
-View.init(function(){
+View.ready(function(){
   this.dispatchListener('user updated', function(event, user, id){
     console.log(user);
   });
